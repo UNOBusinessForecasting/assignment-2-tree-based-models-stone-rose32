@@ -9,10 +9,7 @@ Original file is located at
 
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 from xgboost import XGBClassifier
-from sklearn.model_selection import KFold
 from xgboost import XGBClassifier
 
 data = pd.read_csv('https://github.com/dustywhite7/Econ8310/raw/master/AssignmentData/assignment3.csv')
@@ -40,7 +37,6 @@ tdata['year'] = tdata['DateTime'].dt.year
 tdata['hour'] = tdata['DateTime'].dt.hour
 tdata = tdata.drop('DateTime', axis = 'columns')
 
-Xt = data.drop('meal', axis = 'columns')
-Yt = data['meal']
+Xt = tdata.drop('meal', axis = 'columns')
 
 pred = model.predict(Xt)
